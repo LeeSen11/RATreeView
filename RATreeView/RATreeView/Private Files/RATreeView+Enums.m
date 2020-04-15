@@ -87,39 +87,51 @@
 
 + (UITableViewStyle)tableViewStyleForTreeViewStyle:(RATreeViewStyle)treeViewStyle
 {
-  switch (treeViewStyle) {
-    case RATreeViewStylePlain:
-      return UITableViewStylePlain;
-    case RATreeViewStyleGrouped:
-      return UITableViewStyleGrouped;
-  }
+    switch (treeViewStyle) {
+        case RATreeViewStylePlain:
+            return UITableViewStylePlain;
+        case RATreeViewStyleGrouped:
+            return UITableViewStyleGrouped;
+        case RATreeViewStyleInsetGrouped:
+            if (@available(iOS 13.0, *)) {
+                return UITableViewStyleInsetGrouped;
+            } else {
+                return UITableViewStyleGrouped;
+            }
+    }
 }
 
 + (RATreeViewStyle)treeViewStyleForTableViewStyle:(UITableViewStyle)tableViewStyle
 {
-  switch (tableViewStyle) {
-    case UITableViewStylePlain:
-      return RATreeViewStylePlain;
-    case UITableViewStyleGrouped:
-      return RATreeViewStyleGrouped;
-  }
+    switch (tableViewStyle) {
+        case UITableViewStylePlain:
+            return RATreeViewStylePlain;
+        case UITableViewStyleGrouped:
+            return RATreeViewStyleGrouped;
+        case UITableViewStyleInsetGrouped:
+            if (@available(iOS 13.0, *)) {
+                return RATreeViewStyleInsetGrouped;
+            } else {
+                return RATreeViewStyleGrouped;
+            }
+    }
 }
 #pragma mark Scroll Positions
 
 + (UITableViewScrollPosition)tableViewScrollPositionForTreeViewScrollPosition:(RATreeViewScrollPosition)scrollPosition
 {
-  switch (scrollPosition) {
-    case RATreeViewScrollPositionNone:
-      return UITableViewScrollPositionNone;
-    case RATreeViewScrollPositionTop:
-      return UITableViewScrollPositionTop;
-    case RATreeViewScrollPositionMiddle:
-      return UITableViewScrollPositionMiddle;
-    case RATreeViewScrollPositionBottom:
-      return UITableViewScrollPositionBottom;
-    default:
-      return UITableViewScrollPositionNone;
-  }
+    switch (scrollPosition) {
+        case RATreeViewScrollPositionNone:
+            return UITableViewScrollPositionNone;
+        case RATreeViewScrollPositionTop:
+            return UITableViewScrollPositionTop;
+        case RATreeViewScrollPositionMiddle:
+            return UITableViewScrollPositionMiddle;
+        case RATreeViewScrollPositionBottom:
+            return UITableViewScrollPositionBottom;
+        default:
+            return UITableViewScrollPositionNone;
+    }
 }
 
 
